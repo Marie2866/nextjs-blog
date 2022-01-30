@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 // CREATE users
-app.post("/projetMP/users", (req, res) => {
+app.post("/users", (req, res) => {
   const {
     body: { mail, password },
   } = req;
@@ -23,12 +23,12 @@ app.post("/projetMP/users", (req, res) => {
 });
 
 //READ users collection
-app.get("/projetMP/users", (req, res) => {
+app.get("/users", (req, res) => {
   res.send(Object.values(db.users));
 });
 
 //READ users single
-app.get("/projetMP/users/:userId", (req, res) => {
+app.get("/users/:userId", (req, res) => {
   const {
     params: { userId },
   } = req;
@@ -45,7 +45,7 @@ app.get("/projetMP/users/:userId", (req, res) => {
 });
 
 // UPDATE users
-app.put("/projetMP/users/:userID", (req, res) => {
+app.put("/users/:userID", (req, res) => {
   const {
     params: { userId },
     body: { mail, password },
@@ -64,7 +64,7 @@ app.put("/projetMP/users/:userID", (req, res) => {
 });
 
 // DELETE users
-app.delete("/projetMP/users/:userId", (req, res) => {
+app.delete("/users/:userId", (req, res) => {
   const {
     params: { userId },
   } = req;
