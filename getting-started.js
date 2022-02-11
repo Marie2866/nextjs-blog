@@ -1,7 +1,12 @@
-const mongoose = require("mongoose");
+//Import the mongoose module
+var mongoose = require('mongoose');
 
-main().catch((err) => console.log(err));
+//Set up default mongoose connection
+var mongoDB = 'mongodb://localhost:27017/test';
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
-async function main() {
-  await mongoose.connect("mongodb://localhost:27017/projetMP");
-}
+//Get the default connection
+var db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
